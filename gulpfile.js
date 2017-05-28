@@ -9,9 +9,19 @@ var runSequence = require("run-sequence");
 var basename = require("path").basename;
 
 gulp.task("style", function() {
-    return gulp.src(["./style/**/*.css"])
+    var style = [
+        "./bower_components/**/*.css",
+        "./style/**/*.css"
+    ];
+    return gulp.src(style)
         .pipe(concatCss("style.css"))
         .pipe(gulp.dest("./public/css"));
+});
+
+gulp.task("fonts", function() {
+    return gulp.src("./bower_components/**/fonts/*.{ttf,woff,eof,eot,svg,htc}")
+        .pipe(rename({dirname: ''}))
+        .pipe(gulp.dest("./public/fonts"));
 });
 
 gulp.task("tpl", function() {
@@ -25,6 +35,7 @@ gulp.task("js", function() {
         "./bower_components/jquery/dist/jquery.min.js",
         "./bower_components/angular/angular.min.js",
         "./bower_components/angular-ui-router/release/angular-ui-router.min.js",
+        "./app/chessboard-0.3.0.js",
         "./app/app.js",
         "./app/templates.js",
         "./app/**/*.js"
@@ -35,5 +46,5 @@ gulp.task("js", function() {
 });
 
 gulp.task("default", function(done) {
-    runSequence("style", "tpl", "js", done);
+    runSequence("style", "fonts", "tpl", "js", done);
 });
