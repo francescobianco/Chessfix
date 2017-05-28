@@ -1,0 +1,38 @@
+<div>
+
+    <form>
+
+        <div class="form-group">
+            <label>Script</label>
+            <select
+                name
+                class="form-control"
+                ng-model="$root.current.script"
+                ng-options="k as v for (k, v) in $root.setting.scripts"
+                >
+                <option></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>EPD File</label>
+            <select
+                name
+                class="form-control"
+                ng-model="$root.current.epd"
+                ng-options="k as v for (k, v) in $root.setting.epd"
+                >
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Position</label>
+            <select
+                name
+                class="form-control"
+                >
+            </select>
+        </div>
+
+    </form>
+</div>

@@ -2068,11 +2068,19 @@ angular
                 url: "/",
                 template: "<home/>"
             });
+    })
+    .run(function($rootScope, $http){
+        $http.post("/setting").then(function(resp){
+            console.log(resp.data.epd);
+            $rootScope.setting = resp.data;
+            $rootScope.test = "TEST";
+        });
     });
 
 
-angular.module('app').run(['$templateCache', function($templateCache) {$templateCache.put('app/components/home/home.html','\n<div class="container-fluid">\n    <div class="row">\n        <div class="col-md-5">\n            <div id="board1" style="width: auto"></div>\n        </div>\n        <div class="col-md-7">\n            asd\n        </div>\n    </div>\n</div>\n\n\n\n\n');
-$templateCache.put('app/components/layout/layout.html','\n<div class="container-fluid">\n    <div class="row">\n        <div class="col-md-10">\n            <div ui-view />\n        </div>\n        <div class="col-md-2">\n            asd\n        </div>\n    </div>\n</div>\n\n\n');}]);
+angular.module('app').run(['$templateCache', function($templateCache) {$templateCache.put('app/components/home/home.html','\n<div class="container-fluid">\n    <div class="row">\n        <div class="col-md-5">\n            <div id="board1" style="width: auto"></div>\n        </div>\n        <div class="col-md-7">\n            asf\n        </div>\n    </div>\n</div>\n\n\n\n\n');
+$templateCache.put('app/components/layout/layout.html','\n<div class="container-fluid">\n    <div class="row">\n        <div class="col-md-9">\n            <div ui-view />\n        </div>\n        <div class="col-md-3">\n            <navigator/>\n        </div>\n    </div>\n</div>\n\n\n');
+$templateCache.put('app/components/navigator/navigator.html','<div>\n\n    <form>\n\n        <div class="form-group">\n            <label>Script</label>\n            <select\n                name\n                class="form-control"\n                ng-model="$root.current.script"\n                ng-options="k as v for (k, v) in $root.setting.scripts"\n                >\n                <option></option>\n            </select>\n        </div>\n\n        <div class="form-group">\n            <label>EPD File</label>\n            <select\n                name\n                class="form-control"\n                ng-model="$root.current.epd"\n                ng-options="k as v for (k, v) in $root.setting.epd"\n                >\n            </select>\n        </div>\n\n        <div class="form-group">\n            <label>Position</label>\n            <select\n                name\n                class="form-control"\n                >\n            </select>\n        </div>\n\n    </form>\n</div>');}]);
 /**
  *
  *
@@ -2099,4 +2107,19 @@ angular
     .component("layout", {
         templateUrl: "app/components/layout/layout.html",
         controller: function($scope) {}
+    });
+/**
+ *
+ *
+ */
+
+angular
+    .module("app")
+    .component("navigator", {
+        templateUrl: "app/components/navigator/navigator.html",
+        controller: function($scope, $rootScope) {
+
+
+
+        }
     });
