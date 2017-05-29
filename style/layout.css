@@ -1,3 +1,10 @@
 #layout-container {
     margin: 15px 0 15px 0;
 }
+
+#terminal {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
