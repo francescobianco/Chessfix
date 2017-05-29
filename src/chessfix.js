@@ -20,8 +20,11 @@ app.post('/setting', function (req, res) {
             setting.epd[file] = path.basename(file, ".epd");
         }
     }
-
     res.send(setting);
+});
+
+app.post('/positions', function (req, res) {
+    res.send(req.);
 });
 
 app.listen(8864, function () {

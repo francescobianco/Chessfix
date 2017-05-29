@@ -1,5 +1,9 @@
 {
   "name": "chessfix",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-angular-templatecache": "^2.0.0",

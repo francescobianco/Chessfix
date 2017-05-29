@@ -14,5 +14,14 @@ angular
             $rootScope.setting = resp.data;
             $rootScope.test = "TEST";
         });
+        $rootScope.loadCurrentPositions = function() {
+            $http.post("/positions", {
+                epd: $rootScope.current.epd
+            }).then(function(resp){
+                console.log(resp.data);
+                //$rootScope.setting = resp.data;
+                //$rootScope.test = "TEST";
+            });
+        }
     });
 
