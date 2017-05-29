@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+/*!
+ * Chessfix - chess engine tuning tool
+ * by Francesco Bianco <bianco@javanile.org>
+ * Copyright(c) 2016-2017 Javanile.org
+ * MIT Licensed
+ */
+
+//var cli = require("../src/cli");
+//var arg = process.argv.slice(2);
+
+require("../src/chessfix.js");

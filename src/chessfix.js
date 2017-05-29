@@ -52,6 +52,13 @@ app.post('/positions', function (req, res) {
     res.send(data);
 });
 
+app.post("/exec", function (req, res) {
+    var data = {};
+    console.log(req.body.script);
+    data.terminal = require("child_process").execSync(req.body.script).toString();
+    res.send(data);
+});
+
 app.listen(8864, function () {
     console.log('Example app listening on port 8864!')
 });

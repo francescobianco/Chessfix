@@ -2,7 +2,7 @@
   "epd": "epd",
   "scripts": {
     "perft": {
-      "exec": "echo ${FEN}"
+      "exec": "node script.js ${FEN}"
     }
   }
 }
