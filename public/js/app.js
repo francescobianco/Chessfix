@@ -2101,20 +2101,6 @@ $templateCache.put('app/components/navigator/navigator.html','<div id="navigator
  *
  */
 
-// currentily home not used
-angular
-    .module("app")
-    .component("home", {
-        templateUrl: "app/components/home/home.html",
-        controller: function($scope) {
-
-        }
-    });
-/**
- *
- *
- */
-
 var mainboard = null;
 
 angular
@@ -2132,6 +2118,20 @@ angular
                 mainboard.position(position.fen);
             }
         });
+    });
+/**
+ *
+ *
+ */
+
+// currentily home not used
+angular
+    .module("app")
+    .component("home", {
+        templateUrl: "app/components/home/home.html",
+        controller: function($scope) {
+
+        }
     });
 /**
  *

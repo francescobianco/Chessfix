@@ -1,6 +1,9 @@
 {
   "name": "chessfix",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "bin": {
+    "chessfix": "./bin/chessfix"
+  },
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3"
