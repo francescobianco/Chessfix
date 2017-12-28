@@ -8,6 +8,7 @@
 
 const fs = require("fs"),
       path = require("path"),
+      open = require("open"),
       loader = path.join(
           process.cwd(),
           "node_modules/chessfix/src/chessfix.js"
@@ -19,8 +20,4 @@ if (!fs.existsSync(loader)) {
     require(loader);
 }
 
-try {
-    require("openurl").open("http://localhost:8864");
-} catch (ex) {
-    // shut-it
-}
+open("http://localhost:8864");
