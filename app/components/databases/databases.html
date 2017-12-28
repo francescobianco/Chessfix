@@ -1,0 +1,34 @@
+
+<div class="card">
+    <div class="card-content">
+
+        <div class="field">
+            <p class="control has-icons-left is-expanded">
+                <span class="select">
+                    <select
+                        ng-model="$root.database"
+                        ng-options="k as v.source for (k, v) in $root.config.databases"
+                        ng-change="$root.loadDatabase()"
+                        >
+                    </select>
+                </span>
+                <span class="icon is-small is-left">
+                    <i class="fa fa-book"></i>
+                </span>
+            </p>
+        </div>
+
+        <div class="columns is-multiline">
+
+            <div
+                class="column"
+                ng-click="$ctrl.selectRecord(record)"
+                ng-repeat="record in $root.databaseRecords"
+                >
+                <miniboard fen="record.fen"/>
+            </div>
+
+        </div>
+
+    </div>
+</div>

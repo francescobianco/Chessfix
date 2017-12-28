@@ -4,8 +4,8 @@
  */
 angular
     .module("app")
-    .component("navigator", {
-        templateUrl: "app/components/navigator/navigator.html",
+    .component("navbar", {
+        templateUrl: "app/components/navbar/navbar.html",
         controller: function($scope, $rootScope) {}
     });
 

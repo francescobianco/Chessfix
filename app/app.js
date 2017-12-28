@@ -9,24 +9,31 @@ angular
                 template: "<home/>"
             });
     })
-    .run(function($rootScope, $http){
-        $http.post("/setting").then(function(resp){
-            $rootScope.setting = resp.data;
+    .run(function($rootScope, $http) {
+
+        $http.post("/init").then(function(resp) {
+            $rootScope.config = resp.data.config;
         });
-        $rootScope.callExec = function () {
-            var script = $rootScope.currentScript.exec
-                .replace("${FEN}", '"'+$rootScope.currentPosition.fen+'"');
-            $http.post("/exec", {
-                script: script
-            }).then(function(resp){
-                $("#terminal").html(resp.data.terminal);
+
+        $rootScope.loadDatabase = function() {
+            $http.post("/database", {
+                name: $rootScope.database
+            }).then(function(resp) {
+                $rootScope.databaseRecords = resp.data.records;
             });
         };
-        $rootScope.loadCurrentPositions = function() {
-            $http.post("/positions", {
-                epd: $rootScope.currentEpd
-            }).then(function(resp){
-                $rootScope.currentPositions = resp.data;
+
+        $rootScope.loadRecord = function() {
+            $rootScope.mainboard.position($rootScope.databaseRecord.fen);
+            $rootScope.process();
+        };
+
+        $rootScope.process = function() {
+            $http.post("/process", {
+                utility: $rootScope.utility,
+                record: $rootScope.databaseRecord
+            }).then(function (resp) {
+                $("#output").html(resp.data.output);
             });
         };
     });

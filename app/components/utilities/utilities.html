@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="card-content">
+
+        <div class="field">
+            <p class="control has-icons-left is-expanded">
+                <span class="select">
+                    <select
+                        ng-model="$root.utility"
+                        ng-options="k as k for (k, v) in $root.config.utilities"
+                        ng-change="$root.process()"
+                        >
+                    </select>
+                </span>
+                <span class="icon is-small is-left">
+                    <i class="fa fa-wrench"></i>
+                </span>
+            </p>
+        </div>
+
+        <div class="">
+
+            <output/>
+
+        </div>
+
+    </div>
+</div>

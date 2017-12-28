@@ -1,19 +1,33 @@
 
-<div id="layout-container" class="container-fluid">
-    <div class="row">
-        <!--div class="col-md-9">
-            <div ui-view />
-        </div-->
-        <div class="col-md-4">
-            <div id="mainboard" style="width: auto"></div>
-        </div>
-        <div class="col-md-5">
-            <pre id="terminal">Wellcome to Chessfix</pre>
-        </div>
-        <div id="navigator-column" class="col-md-3">
-            <navigator/>
+<navbar/>
+
+<section class="section">
+    <div class="container is-fluid">
+        <div class="columns">
+
+            <!--div class="col-md-9">
+                <div ui-view />
+            </div-->
+
+            <div class="column" style="max-width: 420px">
+
+                <mainboard/>
+
+                <div class="card">
+                    <div class="card-content">
+                        INFO
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="column">
+                <utilities/>
+            </div>
+            <div class="column">
+                <databases/>
+            </div>
         </div>
     </div>
-</div>
-
+</section>
 

@@ -1,5 +1,7 @@
 
 var gulp = require("gulp");
+var sass = require('gulp-sass');
+var watch = require('gulp-watch');
 var rename = require("gulp-rename");
 var concat = require("gulp-concat");
 var concatCss = require("gulp-concat-css");
@@ -8,9 +10,14 @@ var templateCache = require("gulp-angular-templatecache");
 var runSequence = require("run-sequence");
 var basename = require("path").basename;
 
+gulp.task("sass", function() {
+    return gulp.src('./style/bulma.sass')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./style'));
+});
+
 gulp.task("style", function() {
     var style = [
-        "./bower_components/**/*.css",
         "./style/**/*.css"
     ];
     return gulp.src(style)
@@ -45,6 +52,17 @@ gulp.task("js", function() {
         .pipe(gulp.dest("./public/js"));
 });
 
-gulp.task("default", function(done) {
-    runSequence("style", "fonts", "tpl", "js", done);
+gulp.task("watch", function(){
+    return watch([
+        'app/**',
+        'style/bulma.sass',
+        'style/**/*.css',
+    ], function() {
+        gulp.run(["default"]);
+    });
 });
+
+gulp.task("default", function(done) {
+    runSequence("sass", "style", "fonts", "tpl", "js", done);
+});
+
