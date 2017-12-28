@@ -1,6 +1,6 @@
 {
     "name": "chessfix",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "author": {
         "name": "Francesco Bianco",
         "email": "bianco@javanile.org"
@@ -14,7 +14,8 @@
     },
     "dependencies": {
         "body-parser": "^1.17.2",
-        "express": "^4.15.3"
+        "express": "^4.15.3",
+        "openurl": "^1.1.1"
     },
     "devDependencies": {
         "gulp": "^3.9.1",

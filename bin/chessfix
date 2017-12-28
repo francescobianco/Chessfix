@@ -18,3 +18,5 @@ if (!fs.existsSync(loader)) {
 } else {
     require(loader);
 }
+
+require("openurl").open("http://localhost:8864");
