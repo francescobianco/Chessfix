@@ -6,7 +6,15 @@
  * MIT Licensed
  */
 
-//var cli = require("../src/cli");
-//var arg = process.argv.slice(2);
+const fs = require("fs"),
+      path = require("path"),
+      loader = path.join(
+          process.cwd(),
+          "node_modules/chessfix/src/chessfix.js"
+      );
 
-require("../src/chessfix.js");
+if (!fs.existsSync(loader)) {
+    require("../src/chessfix.js");
+} else {
+    require(loader);
+}
