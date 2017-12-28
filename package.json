@@ -1,6 +1,6 @@
 {
     "name": "chessfix",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "author": {
         "name": "Francesco Bianco",
         "email": "bianco@javanile.org"
@@ -15,7 +15,9 @@
     "dependencies": {
         "body-parser": "^1.17.2",
         "express": "^4.15.3",
-        "open": "0.0.5"
+        "nodemon": "^1.14.3",
+        "open": "0.0.5",
+        "yamljs": "^0.3.0"
     },
     "devDependencies": {
         "gulp": "^3.9.1",

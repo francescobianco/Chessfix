@@ -9,15 +9,28 @@
 const fs = require("fs"),
       path = require("path"),
       open = require("open"),
-      loader = path.join(
+      nodemon = require('nodemon'),
+      local = path.join(
           process.cwd(),
           "node_modules/chessfix/src/chessfix.js"
       );
 
-if (!fs.existsSync(loader)) {
-    require("../src/chessfix.js");
-} else {
-    require(loader);
-}
+nodemon({
+    script: !fs.existsSync(local) ? "../src/chessfix.js" : local,
+    ext: 'js json'
+});
+
+nodemon.on('start', function () {
+    console.log('Chessfix start:');
+}).on('quit', function () {
+    console.log('Chessfix close.');
+    process.exit();
+}).on('restart', function (files) {
+    for (var i in files) {
+        if (files.hasOwnProperty(i)) {
+            console.log('Chessfix file change: ', files[i]);
+        }
+    }
+});
 
 open("http://localhost:8864");

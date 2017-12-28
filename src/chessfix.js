@@ -1,9 +1,13 @@
-/**
- *
+/*!
+ * Chessfix - chess engine tuning tool
+ * by Francesco Bianco <bianco@javanile.org>
+ * Copyright(c) 2016-2017 Javanile.org
+ * MIT Licensed
  */
-const express = require('express')
-const bodyParser = require('body-parser')
-const app = express()
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
 const path = require('path');
 const fs = require('fs');
 
@@ -60,5 +64,5 @@ app.post("/exec", function (req, res) {
 });
 
 app.listen(8864, function () {
-    console.log('Example app listening on port 8864!')
+    console.log('Chessfix (port=8864)...');
 });
