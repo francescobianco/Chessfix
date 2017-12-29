@@ -1,12 +1,19 @@
 
-.no-padding {
-    padding: 0 !important;
-}
+/*/ Handle width /*/
+.width-100pc { width: 100% !important; }
 
-.no-marging {
-    margin: 0 !important;
-}
+/*/ Handle margin /*/
+.no-marging        { margin:        0   !important; }
+.margin-right-8px  { margin-right:  8px !important; }
+.margin-bottom-8px { margin-bottom: 8px !important; }
 
-.overflow-y-scroll {
-    overflow-y: scroll !important;
-}
+/*/ Handle padding /*/
+.no-padding        { padding:       0   !important; }
+.no-padding-left   { padding-left:  0   !important; }
+.padding-8px       { padding:       8px !important; }
+.padding-right-8px { padding-right: 8px !important; }
+
+/*/ Handle overflow /*/
+.overflow-hidden   { overflow:   hidden !important; }
+.overflow-x-hidden { overflow-x: hidden !important; }
+.overflow-y-scroll { overflow-y: scroll !important; }

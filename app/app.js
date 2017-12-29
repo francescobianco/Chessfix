@@ -11,6 +11,14 @@ angular
     })
     .run(function($rootScope, $http) {
 
+        //
+        $(document).on("keydown", function() {
+            if ((e.which || e.keyCode) === 116 || (e.which || e.keyCode) === 82) {
+                //e.preventDefault();
+            }
+        });
+
+        //
         $http.post("/init").then(function(resp) {
             $rootScope.config = resp.data.config;
         });
@@ -35,6 +43,19 @@ angular
             }).then(function (resp) {
                 $("#output").html(resp.data.output);
             });
+
+
+            $http.post("/analysis-start").then(function (resp) {
+                $("#analysis").html("");
+            });
+            if (typeof $rootScope.analysisUpdates !== "undefined") {
+                clearInterval($rootScope.analysisUpdates);
+            }
+            $rootScope.analysisUpdates = setInterval(function() {
+                $http.post("/analysis-updates").then(function (resp) {
+                    $("#analysis").html($("#analysis").html() + resp.data.output);
+                });
+            }, 1000);
         };
     });
 

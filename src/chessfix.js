@@ -5,6 +5,7 @@
  * MIT Licensed
  */
 
+const spawn = require('child_process').spawn;
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -18,6 +19,24 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const configFile = path.join(process.cwd(), 'chessfix.yml');
 const configData = util.loadConfig(configFile);
+
+var runAnalysis = null;
+var useAnalysis = false;
+var outAnalysis = "";
+if (typeof configData.analysis !== 'undefined'
+    && typeof configData.analysis.command !== 'undefined') {
+    console.log(" - analysis load");
+    useAnalysis = true;
+    runAnalysis = spawn(configData.analysis.command);
+    runAnalysis.stdin.write("uci\n");
+    runAnalysis.stdout.on("data", function(output) {
+        outAnalysis += output + "";
+    });
+    runAnalysis.on("exit", function() {
+        useAnalysis = false;
+        console.log(" - analysis exit");
+    });
+}
 
 app.post('/init', function (req, res) {
     res.send({
@@ -38,6 +57,23 @@ app.post('/database', function (req, res) {
 app.post("/process", function (req, res) {
     var command = configData.utilities[req.body.utility].command;
     var output = require("child_process").execSync(command).toString();
+    res.send({
+        output: output
+    });
+});
+
+app.post("/analysis-start", function (req, res) {
+    outAnalysis = "";
+    runAnalysis.stdin.write("stop\n");
+    runAnalysis.stdin.write("go infinite\n");
+    res.send({
+        output: 1
+    });
+});
+
+app.post("/analysis-updates", function (req, res) {
+    var output = outAnalysis;
+    outAnalysis = "";
     res.send({
         output: output
     });

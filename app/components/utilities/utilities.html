@@ -1,10 +1,11 @@
 <div class="card">
-    <div class="card-content">
+    <div class="card-content padding-8px layout-full-height">
 
-        <div class="field">
-            <p class="control has-icons-left is-expanded">
-                <span class="select">
+        <div class="field margin-bottom-8px">
+            <p class="control has-icons-left">
+                <span class="select width-100pc">
                     <select
+                        class="width-100pc"
                         ng-model="$root.utility"
                         ng-options="k as k for (k, v) in $root.config.utilities"
                         ng-change="$root.process()"
@@ -17,11 +18,7 @@
             </p>
         </div>
 
-        <div class="">
-
-            <output/>
-
-        </div>
+        <output/>
 
     </div>
 </div>
